@@ -1,0 +1,18 @@
+CREATE TABLE project (
+    id BIGSERIAL PRIMARY KEY,
+    name TEXT NOT NULL UNIQUE
+);
+
+CREATE TABLE tags (
+    rgb CHAR(7) NOT NULL CHECK (rgb ~ '^#[0-9A-Fa-f]{6}$'),
+    name TEXT PRIMARY KEY
+);
+
+CREATE TABLE log (
+    id BIGSERIAL PRIMARY KEY,
+    date DATE NOT NULL DEFAULT CURRENT_DATE,
+    text TEXT NOT NULL,
+    title TEXT NOT NULL,
+    project_id BIGINT NOT NULL REFERENCES project(id) ON DELETE CASCADE,
+    tags TEXT[] NOT NULL DEFAULT '{}'
+);
