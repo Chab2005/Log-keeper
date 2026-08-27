@@ -15,4 +15,6 @@ Route::get("/modfiy",function () {
     return view("modify");
 });
 
-
+Route::post("/delete",function () {
+    return view("delete");
+});
