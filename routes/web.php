@@ -11,4 +11,8 @@ Route::get("/create",function () {
     return view("create");
 });
 
+Route::get("/modfiy",function () {
+    return view("modify");
+});
+
 
