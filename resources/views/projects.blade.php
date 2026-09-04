@@ -10,7 +10,7 @@
     <section class="project-toolbar">
         <x-search-bar
             placeholder="Search logs..."
-            :url="route('logs.create')"
+            :url="route('logs.create', $project)"
             label="New entry"
         />
     </section>
