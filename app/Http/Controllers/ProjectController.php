@@ -55,7 +55,44 @@ class ProjectController extends Controller
     }
 
     public function createLog() {
-        return view("createLog");
+        $projects = Project::query()->orderBy('name')->get();
+
+        return view("createLog", ['projects' => $projects]);
+    }
+
+    public function storeLog(Request $request) {
+        $validated = $request->validate([
+            'project_id'  => ['required', 'exists:projects,id'],
+            'date'        => ['required', 'date'],
+            'title'       => ['required', 'string', 'max:255'],
+            'summary'     => ['nullable', 'string', 'max:255'],
+            'description' => ['nullable', 'string', 'max:1024'],
+            'tags'        => ['array'],
+            'tags.*'      => ['string', 'max:50'],
+        ], [], [
+            'project_id' => 'project',
+        ]);
+
+        $entry = Entry::create([
+            'project_id'  => $validated['project_id'],
+            'date'        => $validated['date'],
+            'title'       => $validated['title'],
+            'summary'     => $validated['summary'] ?? null,
+            'description' => $validated['description'] ?? null,
+        ]);
+
+        $tagIds = collect($validated['tags'] ?? [])
+            ->map(fn ($name) => trim($name))
+            ->filter()
+            ->unique()
+            ->map(fn ($name) => Tag::firstOrCreate(['name' => $name])->id)
+            ->all();
+
+        $entry->tags()->sync($tagIds);
+
+        return redirect()
+            ->route('projects.show', $entry->project_id)
+            ->with('status', 'Log created.');
     }
 
     public function createProject() {
