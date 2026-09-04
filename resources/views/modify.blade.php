@@ -2,11 +2,11 @@
 
 @section('content')
 
-    <form method="POST" action="{{ route('logs.update', $entry['id']) }}" class="edit-form">
+    <form method="POST" action="{{ route('logs.update', $entry->id) }}" class="edit-form">
         @csrf
 
         <div class="edit-form__actions">
-            <a href="{{ route('logs.show', $entry['id']) }}" class="edit-form__button edit-form__button--cancel">
+            <a href="{{ route('logs.show', $entry->id) }}" class="edit-form__button edit-form__button--cancel">
                 Cancel
             </a>
             <button type="submit" class="edit-form__button edit-form__button--save">
@@ -15,12 +15,12 @@
         </div>
 
         <div class="edit-form__field">
-            <x-modify.title-field :value="$entry['title']" />
+            <x-modify.title-field :value="$entry->title" />
         </div>
 
         <div class="edit-form__field">
             <label class="edit-form__label">Tags</label>
-            <x-tag-input :tags="$entry['tags']" />
+            <x-tag-input :tags="$entry->tags->pluck('name')->all()" />
         </div>
 
         <div class="edit-form__field">
@@ -29,7 +29,7 @@
                 name="summary"
                 label="Summary"
                 :maxlength="255"
-                :value="$entry['summary']"
+                :value="$entry->summary ?? ''"
                 placeholder="Write a short summary..."
             />
         </div>
@@ -40,7 +40,7 @@
                 name="description"
                 label="Description"
                 :maxlength="1024"
-                :value="$entry['description']"
+                :value="$entry->description ?? ''"
                 placeholder="Write a detailed description..."
                 :large="true"
             />
