@@ -1,0 +1,29 @@
+@layer components {
+    .log-entry {
+        @apply relative flex w-full flex-col gap-3 rounded-xl bg-surface-container-low p-6 shadow-sm transition-colors duration-300 ease-in-out hover:bg-surface-container;
+    }
+
+    .log-entry__header {
+        @apply flex flex-col gap-1;
+    }
+
+    .log-entry__title {
+        @apply text-xl font-semibold tracking-tight text-primary sm:text-2xl;
+    }
+
+    .log-entry__timestamp {
+        @apply font-mono text-xs uppercase tracking-widest text-on-surface-variant;
+    }
+
+    .log-entry__description {
+        @apply text-base leading-relaxed text-on-surface;
+    }
+
+    .log-entry__tags {
+        @apply flex flex-wrap gap-2;
+    }
+
+    .log-entry__tag {
+        @apply rounded-[1px] border border-outline-variant/20 bg-surface px-3 py-1 text-xs uppercase tracking-wide text-on-surface-variant;
+    }
+}
