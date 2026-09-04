@@ -8,7 +8,7 @@
     }
 
     .log-entry__title {
-        @apply text-xl font-semibold tracking-tight text-primary sm:text-2xl;
+        @apply text-xl font-semibold tracking-tight text-primary sm:text-2xl break-words;
     }
 
     .log-entry__timestamp {
@@ -16,7 +16,7 @@
     }
 
     .log-entry__description {
-        @apply text-base leading-relaxed text-on-surface;
+        @apply text-base leading-relaxed text-on-surface break-words;
     }
 
     .log-entry__tags {
