@@ -54,28 +54,21 @@ class ProjectController extends Controller
         return view("log", ['entry' => $entry]);
     }
 
-    public function createLog() {
-        $projects = Project::query()->orderBy('name')->get();
-
-        return view("createLog", ['projects' => $projects]);
+    public function createLog(Project $project) {
+        return view("createLog", ['project' => $project]);
     }
 
-    public function storeLog(Request $request) {
+    public function storeLog(Request $request, Project $project) {
         $validated = $request->validate([
-            'project_id'  => ['required', 'exists:projects,id'],
-            'date'        => ['required', 'date'],
             'title'       => ['required', 'string', 'max:255'],
             'summary'     => ['nullable', 'string', 'max:255'],
             'description' => ['nullable', 'string', 'max:1024'],
             'tags'        => ['array'],
             'tags.*'      => ['string', 'max:50'],
-        ], [], [
-            'project_id' => 'project',
         ]);
 
-        $entry = Entry::create([
-            'project_id'  => $validated['project_id'],
-            'date'        => $validated['date'],
+        $entry = $project->entries()->create([
+            'date'        => now(),
             'title'       => $validated['title'],
             'summary'     => $validated['summary'] ?? null,
             'description' => $validated['description'] ?? null,
