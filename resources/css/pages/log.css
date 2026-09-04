@@ -20,7 +20,7 @@
     }
 
     .log-detail-header__title {
-        @apply text-3xl font-bold uppercase tracking-tight text-primary sm:text-4xl md:text-5xl;
+        @apply text-3xl font-bold uppercase tracking-tight text-primary sm:text-4xl md:text-5xl break-words;
     }
 
     .log-detail-header__actions {

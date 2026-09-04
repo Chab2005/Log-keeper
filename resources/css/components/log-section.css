@@ -12,6 +12,6 @@
     }
 
     .log-section__text {
-        @apply text-base leading-relaxed text-on-surface-variant;
+        @apply text-base leading-relaxed text-on-surface-variant break-words;
     }
 }

@@ -4,11 +4,11 @@
     }
 
     .project-hero__title {
-        @apply text-3xl font-bold uppercase tracking-tight text-primary sm:text-4xl md:text-5xl;
+        @apply text-3xl font-bold uppercase tracking-tight text-primary sm:text-4xl md:text-5xl break-words;
     }
 
     .project-hero__subtitle {
-        @apply text-base text-on-surface-variant sm:text-lg;
+        @apply text-base text-on-surface-variant sm:text-lg break-words;
     }
 
     .project-log-list {
