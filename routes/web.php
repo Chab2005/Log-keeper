@@ -12,9 +12,9 @@ Route::post('/projects',[ProjectController::class, 'storeProject'])->name('proje
 
 Route::get('/projects/{id}', [ProjectController::class, 'show'])->name('projects.show');
 
-Route::get('/logs/create', [ProjectController::class, 'createLog'])->name('logs.create');
+Route::get('/projects/{project}/logs/create', [ProjectController::class, 'createLog'])->name('logs.create');
 
-Route::post('/logs', [ProjectController::class, 'storeLog'])->name('logs.store');
+Route::post('/projects/{project}/logs', [ProjectController::class, 'storeLog'])->name('logs.store');
 
 Route::get('/logs/{id}', [ProjectController::class, 'showLog'])->name('logs.show');
 
