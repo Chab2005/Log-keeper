@@ -14,4 +14,8 @@
     .project-log-list {
         @apply flex flex-col gap-4;
     }
+
+    .project-log-list__empty {
+        @apply text-sm text-on-surface-variant;
+    }
 }
