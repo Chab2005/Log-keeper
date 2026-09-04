@@ -60,7 +60,7 @@ class ProjectController extends Controller
 
     public function storeLog(Request $request, Project $project) {
         $validated = $request->validate([
-            'title'       => ['required', 'string', 'max:255'],
+            'title'       => ['required', 'string', 'max:25'],
             'summary'     => ['nullable', 'string', 'max:255'],
             'description' => ['nullable', 'string', 'max:1024'],
             'tags'        => ['array'],
@@ -94,15 +94,15 @@ class ProjectController extends Controller
 
     public function storeProject(Request $request) {
         $validated = $request->validate([
-            'title'    => ['required', 'string', 'max:50'],
-            'subtitle' => ['nullable', 'string', 'max:50'],
+            'title'    => ['required', 'string', 'max:25'],
+            'subtitle' => ['required', 'string', 'max:50'],
             'tags'     => ['array'],
             'tags.*'   => ['string', 'max:50'],
         ]);
 
         $project = Project::create([
             'name'    => $validated['title'],
-            'summary' => $validated['subtitle'] ?? null,
+            'summary' => $validated['subtitle'],
         ]);
 
         $tagIds = collect($validated['tags'] ?? [])
@@ -135,7 +135,7 @@ class ProjectController extends Controller
         }
 
         $validated = $request->validate([
-            'title'       => ['required', 'string', 'max:255'],
+            'title'       => ['required', 'string', 'max:25'],
             'summary'     => ['nullable', 'string', 'max:255'],
             'description' => ['nullable', 'string', 'max:1024'],
             'tags'        => ['array'],
