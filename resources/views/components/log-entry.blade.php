@@ -6,7 +6,7 @@
     'tags' => [],
 ])
 
-<a href="{{ route('logs.show', $id) }}" class="log-entry">
+<a href="{{ route('logs.show', $id) }}" class="log-entry" data-search-item data-search-title="{{ $title }}">
     <div class="log-entry__header">
         <h3 class="log-entry__title">{{ $title }}</h3>
         @if ($timestamp)

@@ -2,9 +2,17 @@
     'placeholder' => 'Search...',
     'url' => '/create',
     'label' => 'Create new',
+    'filter' => null,
+    'emptyMessage' => 'No matches found.',
 ])
 
-<div class="search-bar">
+<div
+    class="search-bar"
+    @if ($filter)
+        data-search-filter="{{ $filter }}"
+        data-search-empty="{{ $emptyMessage }}"
+    @endif
+>
     <div class="search-bar__field">
         <svg class="search-bar__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <circle cx="11" cy="11" r="7"></circle>

@@ -16,6 +16,7 @@
     }
 
     .project-log-list__empty {
-        @apply text-sm text-on-surface-variant;
+        /* size +10% over text-sm, colour +10% brighter than on-surface-variant */
+        @apply text-center text-[0.9625rem] text-[#d8dbdc];
     }
 }

@@ -11,6 +11,8 @@
             placeholder="Query projects..."
             :url="route('project.create')"
             label="New project"
+            filter=".index-grid"
+            empty-message="No projects match your search."
         />
     </section>
 

@@ -1,3 +1,5 @@
+import { initSearchFilters } from './modules/search-filter';
+
 function autoGrow(textarea: HTMLTextAreaElement): void {
     textarea.style.height = 'auto';
     textarea.style.height = `${textarea.scrollHeight}px`;
@@ -87,4 +89,5 @@ document.addEventListener('DOMContentLoaded', () => {
     initAutoGrowTextareas();
     initCharacterCounters();
     initTagInputs();
+    initSearchFilters();
 });

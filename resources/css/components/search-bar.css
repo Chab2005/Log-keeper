@@ -22,4 +22,14 @@
     .search-bar__button-icon {
         @apply h-6 w-6;
     }
+
+    .search-filter-hidden {
+        /* Wins over component display rules (flex/grid) regardless of import order. */
+        display: none !important;
+    }
+
+    .search-filter__empty {
+        /* size +10% over text-sm, colour +10% brighter than on-surface-variant */
+        @apply text-center text-[0.9625rem] text-[#d8dbdc] sm:col-span-2;
+    }
 }

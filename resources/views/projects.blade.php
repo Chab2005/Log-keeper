@@ -12,6 +12,8 @@
             placeholder="Search logs..."
             :url="route('logs.create', $project)"
             label="New entry"
+            filter=".project-log-list"
+            empty-message="No entries match your search."
         />
     </section>
 

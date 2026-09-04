@@ -5,7 +5,7 @@
     'title' => 'Untitled Project',
 ])
 
-<a href="{{ route('projects.show', $id) }}" class="project-card">
+<a href="{{ route('projects.show', $id) }}" class="project-card" data-search-item data-search-title="{{ $title }}">
     <div class="project-card__header">
         <span class="project-card__id">ID: {{ $id }}</span>
         <h1 class="project-card__title">{{ $title }}</h1>
