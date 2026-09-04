@@ -14,6 +14,8 @@ Route::get('/projects/{id}', [ProjectController::class, 'show'])->name('projects
 
 Route::get('/logs/create', [ProjectController::class, 'createLog'])->name('logs.create');
 
+Route::post('/logs', [ProjectController::class, 'storeLog'])->name('logs.store');
+
 Route::get('/logs/{id}', [ProjectController::class, 'showLog'])->name('logs.show');
 
 Route::get('/logs/{id}/edit', [ProjectController::class, 'editLog'])->name('logs.edit');
