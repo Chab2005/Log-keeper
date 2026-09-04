@@ -15,14 +15,16 @@
     </section>
 
     <section class="index-grid">
-        @foreach ($projects as $project)
+        @forelse ($projects as $project)
             <x-project-card
-                :id="$project['id']"
-                :title="$project['title']"
-                :tags="$project['tags']"
-                :last-modified="$project['lastModified']"
+                :id="$project->id"
+                :title="$project->name"
+                :tags="$project->tags->pluck('name')->all()"
+                :last-modified="$project->last_entry_date?->diffForHumans()"
             />
-        @endforeach
+        @empty
+            <p class="index-grid__empty">No projects yet.</p>
+        @endforelse
     </section>
 
 @endsection
