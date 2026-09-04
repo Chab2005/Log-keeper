@@ -12,7 +12,7 @@ class ProjectController extends Controller
     public function index() {
         $projects = Project::query()
             ->with('tags')
-            ->withMax('entries as last_entry_date', 'date')
+            ->withMax('entries as last_entry_at', 'created_at')
             ->latest()
             ->get();
 
@@ -127,8 +127,39 @@ class ProjectController extends Controller
         return view("modify", ['entry' => $entry]);
     }
 
-    public function updateLog($id) {
-        return redirect()->route('logs.show', $id);
+    public function updateLog(Request $request, $id) {
+        $entry = Entry::query()->find($id);
+
+        if (! $entry) {
+            return view("logs.missing");
+        }
+
+        $validated = $request->validate([
+            'title'       => ['required', 'string', 'max:255'],
+            'summary'     => ['nullable', 'string', 'max:255'],
+            'description' => ['nullable', 'string', 'max:1024'],
+            'tags'        => ['array'],
+            'tags.*'      => ['string', 'max:50'],
+        ]);
+
+        $entry->update([
+            'title'       => $validated['title'],
+            'summary'     => $validated['summary'] ?? null,
+            'description' => $validated['description'] ?? null,
+        ]);
+
+        $tagIds = collect($validated['tags'] ?? [])
+            ->map(fn ($name) => trim($name))
+            ->filter()
+            ->unique()
+            ->map(fn ($name) => Tag::firstOrCreate(['name' => $name])->id)
+            ->all();
+
+        $entry->tags()->sync($tagIds);
+
+        return redirect()
+            ->route('logs.show', $entry->id)
+            ->with('status', 'Log updated.');
     }
 
     public function deleteLog($id) {
