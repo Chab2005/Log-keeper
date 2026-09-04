@@ -1,0 +1,41 @@
+@layer components {
+    .project-card {
+        @apply relative flex flex-col overflow-hidden rounded-xl bg-surface-container p-6 shadow-md transition-transform duration-500 ease-in-out hover:-translate-y-2;
+    }
+
+    .project-card__header {
+        @apply mb-8 flex flex-col gap-2;
+    }
+
+    .project-card__id {
+        @apply font-mono text-sm uppercase tracking-widest text-on-surface-variant;
+    }
+
+    .project-card__title {
+        @apply text-3xl font-semibold tracking-tight text-on-surface;
+    }
+
+    .project-card__footer {
+        @apply mt-auto flex flex-col gap-3;
+    }
+
+    .project-card__tags {
+        @apply flex flex-wrap gap-2;
+    }
+
+    .project-card__tag {
+        @apply rounded-[1px] border border-outline-variant/20 bg-surface px-3 py-1 text-xs uppercase tracking-wide text-on-surface-variant;
+    }
+
+    .project-card__status {
+        @apply flex items-center gap-2 rounded-lg border border-outline-variant/10 bg-surface p-3;
+    }
+
+    .project-card__dot {
+        @apply h-2 w-2 shrink-0 rounded-full bg-primary;
+    }
+
+    .project-card__last-modified {
+        @apply text-sm text-on-surface-variant;
+    }
+}
