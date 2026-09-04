@@ -1,5 +1,5 @@
 <footer class="site-footer">
     <div class="site-footer__inner">
-        &copy; {{ date('Y') }} VOID SYSTEM ARCHITECTURE. ALL ENTRIES ENCRYPTED.
+        &copy; {{ date('Y') }} Pierre-Alexandre Chabot. All right reserved.
     </div>
 </footer>
