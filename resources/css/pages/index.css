@@ -1,0 +1,13 @@
+@layer components {
+    .index-hero {
+        @apply flex flex-col gap-2;
+    }
+
+    .index-hero__title {
+        @apply text-3xl font-bold uppercase tracking-tight text-on-background sm:text-4xl md:text-5xl;
+    }
+
+    .index-grid {
+        @apply grid grid-cols-1 gap-4 sm:grid-cols-2;
+    }
+}
