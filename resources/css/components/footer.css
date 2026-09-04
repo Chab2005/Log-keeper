@@ -1,0 +1,9 @@
+@layer components {
+    .site-footer {
+        @apply w-full border-t border-outline-variant/10 py-8 sm:py-12;
+    }
+
+    .site-footer__inner {
+        @apply px-4 text-center text-[11px] uppercase tracking-widest text-on-surface-variant sm:px-6 sm:text-xs;
+    }
+}
