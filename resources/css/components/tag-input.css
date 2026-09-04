@@ -1,0 +1,17 @@
+@layer components {
+    .tag-input {
+        @apply flex w-full flex-wrap items-center gap-2 rounded-lg border border-outline-variant bg-surface-container-low p-2 transition-colors duration-300 ease-in-out focus-within:border-primary;
+    }
+
+    .tag-input__chip {
+        @apply inline-flex items-center gap-2 rounded-[1px] border border-outline-variant/20 bg-surface px-3 py-1 text-xs uppercase tracking-wide text-on-surface-variant;
+    }
+
+    .tag-input__remove {
+        @apply cursor-pointer text-on-surface-variant transition-colors duration-300 ease-in-out hover:text-danger;
+    }
+
+    .tag-input__field {
+        @apply min-w-[150px] flex-1 border-none bg-transparent px-2 py-1 text-sm text-on-surface outline-none placeholder-on-surface-variant/50;
+    }
+}
