@@ -1,0 +1,21 @@
+@layer components {
+    .not-found {
+        @apply flex flex-col items-center gap-3 py-16 text-center sm:py-24;
+    }
+
+    .not-found__code {
+        @apply text-6xl font-bold tracking-tight text-outline-variant sm:text-7xl;
+    }
+
+    .not-found__title {
+        @apply text-2xl font-bold uppercase tracking-tight text-on-background sm:text-3xl;
+    }
+
+    .not-found__message {
+        @apply max-w-md text-sm text-on-surface-variant sm:text-base;
+    }
+
+    .not-found__link {
+        @apply mt-2 inline-flex items-center justify-center rounded-full border-2 border-primary px-6 py-2 text-xs font-semibold uppercase tracking-widest text-primary transition-colors duration-300 ease-in-out hover:bg-primary hover:text-background;
+    }
+}
