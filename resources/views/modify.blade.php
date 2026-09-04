@@ -25,7 +25,7 @@
         </div>
 
         <div class="edit-form__field">
-            <x-modify.title-field :value="old('title', $entry->title)" />
+            <x-modify.title-field :maxlength="25" :value="old('title', $entry->title)" />
         </div>
 
         <div class="edit-form__field">

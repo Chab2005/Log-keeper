@@ -25,7 +25,7 @@
         </div>
 
         <div class="edit-form__field">
-            <x-modify.title-field :maxlength="50" :value="old('title', '')" />
+            <x-modify.title-field :maxlength="25" :value="old('title', '')" />
         </div>
 
         <div class="edit-form__field">
@@ -41,6 +41,7 @@
                 :maxlength="50"
                 :value="old('subtitle', '')"
                 placeholder="Write a short subtitle..."
+                :required="true"
             />
         </div>
     </form>
