@@ -1,0 +1,17 @@
+@layer components {
+    .project-hero {
+        @apply flex flex-col gap-2;
+    }
+
+    .project-hero__title {
+        @apply text-3xl font-bold uppercase tracking-tight text-primary sm:text-4xl md:text-5xl;
+    }
+
+    .project-hero__subtitle {
+        @apply text-base text-on-surface-variant sm:text-lg;
+    }
+
+    .project-log-list {
+        @apply flex flex-col gap-4;
+    }
+}
