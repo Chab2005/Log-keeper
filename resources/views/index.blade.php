@@ -3,7 +3,7 @@
 @section('content')
 
     <section class="index-hero">
-        <h1 class="index-hero__title">All Logs</h1>
+        <h1 class="index-hero__title">All Projects</h1>
     </section>
 
     <section class="index-toolbar">
@@ -20,7 +20,7 @@
                 :id="$project->id"
                 :title="$project->name"
                 :tags="$project->tags->pluck('name')->all()"
-                :last-modified="$project->last_entry_date?->diffForHumans()"
+                :last-modified="$project->last_entry_at?->diffForHumans()"
             />
         @empty
             <p class="index-grid__empty">No projects yet.</p>
