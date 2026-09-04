@@ -18,11 +18,9 @@
             @endforeach
         </div>
 
-        @if ($lastModified)
-            <div class="project-card__status">
-                <span class="project-card__dot"></span>
-                <span class="project-card__last-modified">Last entry: {{ $lastModified }}</span>
-            </div>
-        @endif
+        <div class="project-card__status">
+            <span class="project-card__dot @unless ($lastModified) project-card__dot--empty @endunless"></span>
+            <span class="project-card__last-modified">{{ $lastModified ? "Last entry: {$lastModified}" : 'No entries yet' }}</span>
+        </div>
     </div>
 </a>
