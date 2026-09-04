@@ -3,8 +3,8 @@
 @section('content')
 
     <section class="project-hero">
-        <h1 class="project-hero__title">{{ $project['title'] }}</h1>
-        <p class="project-hero__subtitle">{{ $project['subtitle'] }}</p>
+        <h1 class="project-hero__title">{{ $project->name }}</h1>
+        <p class="project-hero__subtitle">{{ $project->summary }}</p>
     </section>
 
     <section class="project-toolbar">
@@ -16,15 +16,17 @@
     </section>
 
     <section class="project-log-list">
-        @foreach ($entries as $entry)
+        @forelse ($project->entries as $entry)
             <x-log-entry
-                :id="$entry['id']"
-                :title="$entry['title']"
-                :timestamp="$entry['timestamp']"
-                :description="$entry['summary']"
-                :tags="$entry['tags']"
+                :id="$entry->id"
+                :title="$entry->title"
+                :timestamp="$entry->date?->format('Y-m-d')"
+                :description="$entry->summary"
+                :tags="$entry->tags->pluck('name')->all()"
             />
-        @endforeach
+        @empty
+            <p class="project-log-list__empty">No entries yet.</p>
+        @endforelse
     </section>
 
 @endsection
