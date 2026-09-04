@@ -13,6 +13,13 @@ class Project extends Model
         'summary',
     ];
 
+    protected function casts(): array
+    {
+        return [
+            'last_entry_date' => 'date',
+        ];
+    }
+
     public function entries(): HasMany
     {
         return $this->hasMany(Entry::class);
