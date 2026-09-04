@@ -35,6 +35,10 @@
         @apply h-2 w-2 shrink-0 rounded-full bg-primary;
     }
 
+    .project-card__dot--empty {
+        @apply bg-outline-variant;
+    }
+
     .project-card__last-modified {
         @apply text-sm text-on-surface-variant;
     }

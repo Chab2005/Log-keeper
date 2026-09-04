@@ -16,7 +16,7 @@ class Project extends Model
     protected function casts(): array
     {
         return [
-            'last_entry_date' => 'date',
+            'last_entry_at' => 'datetime',
         ];
     }
 
