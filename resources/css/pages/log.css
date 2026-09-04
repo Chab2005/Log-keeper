@@ -1,0 +1,49 @@
+@layer components {
+    .log-detail-header {
+        @apply flex flex-col gap-4;
+    }
+
+    .log-detail-header__meta {
+        @apply flex flex-wrap items-center gap-3 font-mono text-xs uppercase tracking-widest text-on-surface-variant;
+    }
+
+    .log-detail-header__dot {
+        @apply h-1 w-1 shrink-0 rounded-full bg-outline-variant;
+    }
+
+    .log-detail-header__tags {
+        @apply flex flex-wrap gap-2;
+    }
+
+    .log-detail-header__tag {
+        @apply rounded-[1px] border border-outline-variant/20 bg-surface px-2 py-0.5 text-on-surface-variant;
+    }
+
+    .log-detail-header__title {
+        @apply text-3xl font-bold uppercase tracking-tight text-primary sm:text-4xl md:text-5xl;
+    }
+
+    .log-detail-header__actions {
+        @apply flex flex-wrap gap-3;
+    }
+
+    .log-detail-header__form {
+        @apply inline-flex;
+    }
+
+    .log-detail-header__button {
+        @apply inline-flex cursor-pointer items-center justify-center rounded-full border-2 bg-transparent px-6 py-2 text-xs font-semibold uppercase tracking-widest transition-colors duration-300 ease-in-out;
+    }
+
+    .log-detail-header__button--edit {
+        @apply border-primary text-primary hover:bg-primary hover:text-background;
+    }
+
+    .log-detail-header__button--delete {
+        @apply border-danger text-danger hover:bg-danger hover:text-background;
+    }
+
+    .log-detail-body {
+        @apply flex flex-col gap-6;
+    }
+}
