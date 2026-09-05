@@ -17,6 +17,7 @@
 @import './components/log-section.css';
 @import './components/tag-input.css';
 @import './components/not-found.css';
+@import './pages/auth.css';
 @import './pages/index.css';
 @import './pages/projects.css';
 @import './pages/log.css';
