@@ -1,10 +1,15 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ProjectController;
 
 
 Route::get('/', [ProjectController::class, 'index']);
+
+Route::get('/login', [AuthController::class, 'showLogin'])->name('login');
+
+Route::get('/register', [AuthController::class, 'showRegister'])->name('register');
 
 Route::get('/projects/create',[ProjectController::class, 'createProject'])->name('project.create');
 
