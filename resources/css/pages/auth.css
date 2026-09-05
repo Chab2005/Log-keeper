@@ -1,0 +1,13 @@
+@layer components {
+    .auth-body {
+        @apply mx-auto flex w-full max-w-[420px] flex-col gap-6;
+    }
+
+    .auth-body__title {
+        @apply text-2xl font-bold uppercase tracking-tight text-primary sm:text-3xl;
+    }
+
+    .auth-body__content {
+        @apply flex flex-col gap-4;
+    }
+}
