@@ -10,6 +10,7 @@ class Entry extends Model
 {
     protected $fillable = [
         'project_id',
+        'user_id',
         'date',
         'title',
         'summary',
@@ -26,6 +27,11 @@ class Entry extends Model
     public function project(): BelongsTo
     {
         return $this->belongsTo(Project::class);
+    }
+
+    public function user(): BelongsTo
+    {
+        return $this->belongsTo(User::class);
     }
 
     public function tags(): BelongsToMany
