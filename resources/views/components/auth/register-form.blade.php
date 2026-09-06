@@ -32,4 +32,8 @@
         placeholder="••••••••••••"
         autocomplete="new-password"
     />
+
+    <x-slot:footer>
+        Already an account, log in <a href="{{ route('login') }}" class="auth-form__link">here</a>
+    </x-slot:footer>
 </x-auth.form>
