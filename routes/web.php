@@ -1,19 +1,20 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ProjectController;
-
+use Illuminate\Support\Facades\Route;
 
 Route::get('/', [ProjectController::class, 'index']);
 
 Route::get('/login', [AuthController::class, 'showLogin'])->name('login');
 
+Route::post('/login', [AuthController::class, 'login'])->name('login.store');
+
 Route::get('/register', [AuthController::class, 'showRegister'])->name('register');
 
-Route::get('/projects/create',[ProjectController::class, 'createProject'])->name('project.create');
+Route::get('/projects/create', [ProjectController::class, 'createProject'])->name('project.create');
 
-Route::post('/projects',[ProjectController::class, 'storeProject'])->name('project.store');
+Route::post('/projects', [ProjectController::class, 'storeProject'])->name('project.store');
 
 Route::get('/projects/{id}', [ProjectController::class, 'show'])->name('projects.show');
 
@@ -29,12 +30,8 @@ Route::post('/logs/{id}/update', [ProjectController::class, 'updateLog'])->name(
 
 Route::post('/logs/{id}/delete', [ProjectController::class, 'deleteLog'])->name('logs.delete');
 
+Route::get('/create', [ProjectController::class, 'create']);
 
+Route::get('/modfiy', [ProjectController::class, 'modify']);
 
-Route::get("/create",[ProjectController::class, 'create']);
-
-Route::get("/modfiy",[ProjectController::class, 'modify']);
-
-Route::post("/delete",[ProjectController::class,'delete']);
-
-
+Route::post('/delete', [ProjectController::class, 'delete']);
