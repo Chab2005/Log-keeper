@@ -55,10 +55,14 @@ class ProjectController extends Controller
     }
 
     public function createLog(Project $project) {
+        $this->authorize('createEntry', $project);
+
         return view("createLog", ['project' => $project, 'title' => 'New log']);
     }
 
     public function storeLog(Request $request, Project $project) {
+        $this->authorize('createEntry', $project);
+
         $validated = $request->validate([
             'title'       => ['required', 'string', 'max:25'],
             'summary'     => ['nullable', 'string', 'max:255'],
@@ -69,6 +73,7 @@ class ProjectController extends Controller
 
         $entry = $project->entries()->create([
             'date'        => now(),
+            'user_id'     => $request->user()->id,
             'title'       => $validated['title'],
             'summary'     => $validated['summary'] ?? null,
             'description' => $validated['description'] ?? null,
@@ -103,6 +108,7 @@ class ProjectController extends Controller
         $project = Project::create([
             'name'    => $validated['title'],
             'summary' => $validated['subtitle'],
+            'user_id' => $request->user()->id,
         ]);
 
         $tagIds = collect($validated['tags'] ?? [])
@@ -124,6 +130,8 @@ class ProjectController extends Controller
             return view("logs.missing", ['title' => 'Entry not found']);
         }
 
+        $this->authorize('update', $entry);
+
         return view("modify", ['entry' => $entry, 'title' => 'Edit log']);
     }
 
@@ -133,6 +141,8 @@ class ProjectController extends Controller
         if (! $entry) {
             return view("logs.missing", ['title' => 'Entry not found']);
         }
+
+        $this->authorize('update', $entry);
 
         $validated = $request->validate([
             'title'       => ['required', 'string', 'max:25'],
@@ -163,6 +173,21 @@ class ProjectController extends Controller
     }
 
     public function deleteLog($id) {
-        return redirect()->back();
+        $entry = Entry::query()->find($id);
+
+        if (! $entry) {
+            return view("logs.missing", ['title' => 'Entry not found']);
+        }
+
+        $this->authorize('delete', $entry);
+
+        $projectId = $entry->project_id;
+
+        $entry->tags()->detach();
+        $entry->delete();
+
+        return redirect()
+            ->route('projects.show', $projectId)
+            ->with('status', 'Log deleted.');
     }
 }
