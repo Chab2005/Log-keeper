@@ -14,6 +14,7 @@
             label="New entry"
             filter=".project-log-list"
             empty-message="No entries match your search."
+            :can-create="auth()->user()?->can('createEntry', $project) ?? false"
         />
     </section>
 

@@ -4,6 +4,8 @@
     'label' => 'Create new',
     'filter' => null,
     'emptyMessage' => 'No matches found.',
+    // Only authenticated users may create; defaults to the current auth state.
+    'canCreate' => null,
 ])
 
 <div
@@ -21,10 +23,12 @@
         <input type="text" class="search-bar__input" placeholder="{{ $placeholder }}">
     </div>
 
-    <a href="{{ $url }}" class="search-bar__button" aria-label="{{ $label }}">
-        <svg class="search-bar__button-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <line x1="12" y1="5" x2="12" y2="19"></line>
-            <line x1="5" y1="12" x2="19" y2="12"></line>
-        </svg>
-    </a>
+    @if ($canCreate ?? auth()->check())
+        <a href="{{ $url }}" class="search-bar__button" aria-label="{{ $label }}">
+            <svg class="search-bar__button-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="12" y1="5" x2="12" y2="19"></line>
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+            </svg>
+        </a>
+    @endif
 </div>
