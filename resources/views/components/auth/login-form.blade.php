@@ -1,6 +1,4 @@
-<form method="POST" action="{{ route('login.store') }}" class="auth-form">
-    @csrf
-
+<x-auth.form :action="route('login.store')" heading="Login" submit="Login">
     <x-auth.text-field
         name="login"
         label="Username / Email"
@@ -17,6 +15,4 @@
         placeholder="••••••••••••"
         autocomplete="current-password"
     />
-
-    <button type="submit" class="auth-form__submit">Login</button>
-</form>
+</x-auth.form>

@@ -2,7 +2,7 @@
 
 @section('content')
 
-    <x-body title="Login">
+    <x-body>
         <x-auth.login-form />
     </x-body>
 
