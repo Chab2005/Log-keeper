@@ -38,24 +38,24 @@ class ProjectController extends Controller
             ->find($id);
 
         if (! $project) {
-            return view("projects.missing");
+            return view("projects.missing", ['title' => 'Project not found']);
         }
 
-        return view("projects", ['project' => $project]);
+        return view("projects", ['project' => $project, 'title' => $project->name]);
     }
 
     public function showLog($id) {
         $entry = Entry::query()->with('tags')->find($id);
 
         if (! $entry) {
-            return view("logs.missing");
+            return view("logs.missing", ['title' => 'Entry not found']);
         }
 
-        return view("log", ['entry' => $entry]);
+        return view("log", ['entry' => $entry, 'title' => $entry->title]);
     }
 
     public function createLog(Project $project) {
-        return view("createLog", ['project' => $project]);
+        return view("createLog", ['project' => $project, 'title' => 'New log']);
     }
 
     public function storeLog(Request $request, Project $project) {
@@ -89,7 +89,7 @@ class ProjectController extends Controller
     }
 
     public function createProject() {
-        return view("createProject");
+        return view("createProject", ['title' => 'New project']);
     }
 
     public function storeProject(Request $request) {
@@ -121,17 +121,17 @@ class ProjectController extends Controller
         $entry = Entry::query()->with('tags')->find($id);
 
         if (! $entry) {
-            return view("logs.missing");
+            return view("logs.missing", ['title' => 'Entry not found']);
         }
 
-        return view("modify", ['entry' => $entry]);
+        return view("modify", ['entry' => $entry, 'title' => 'Edit log']);
     }
 
     public function updateLog(Request $request, $id) {
         $entry = Entry::query()->find($id);
 
         if (! $entry) {
-            return view("logs.missing");
+            return view("logs.missing", ['title' => 'Entry not found']);
         }
 
         $validated = $request->validate([
