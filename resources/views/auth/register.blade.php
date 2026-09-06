@@ -2,8 +2,8 @@
 
 @section('content')
 
-    <x-body title="Register">
-        {{-- Registration form coming soon --}}
+    <x-body>
+        <x-auth.register-form />
     </x-body>
 
 @endsection

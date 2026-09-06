@@ -3,6 +3,10 @@
         @apply flex w-full flex-col gap-6 rounded-2xl border border-outline-variant bg-surface-container-low p-8 shadow-2xl sm:p-10;
     }
 
+    .auth-form__heading {
+        @apply text-3xl font-bold uppercase tracking-tight text-primary sm:text-4xl;
+    }
+
     .auth-field {
         @apply flex flex-col gap-2;
     }
