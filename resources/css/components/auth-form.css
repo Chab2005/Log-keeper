@@ -30,4 +30,12 @@
     .auth-form__submit {
         @apply mt-2 w-full cursor-pointer rounded-xl bg-primary px-6 py-3.5 text-sm font-bold uppercase tracking-widest text-background transition-colors duration-150 ease-in-out hover:bg-primary-fixed-dim active:scale-[0.99];
     }
+
+    .auth-form__footer {
+        @apply text-center text-sm text-outline;
+    }
+
+    .auth-form__link {
+        @apply font-medium text-primary underline underline-offset-2 transition-opacity hover:opacity-70;
+    }
 }
