@@ -15,4 +15,8 @@
         placeholder="••••••••••••"
         autocomplete="current-password"
     />
+
+    <x-slot:footer>
+        No account, register <a href="{{ route('register') }}" class="auth-form__link">here</a>
+    </x-slot:footer>
 </x-auth.form>
