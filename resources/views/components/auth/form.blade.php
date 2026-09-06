@@ -12,4 +12,8 @@
     {{ $slot }}
 
     <button type="submit" class="auth-form__submit">{{ $submit }}</button>
+
+    @isset($footer)
+        <p class="auth-form__footer">{{ $footer }}</p>
+    @endisset
 </form>
