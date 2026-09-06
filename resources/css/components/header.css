@@ -12,8 +12,16 @@
         @apply md:absolute md:left-1/2 md:-translate-x-1/2;
     }
 
+    .site-header__auth-form {
+        @apply ml-auto inline-flex;
+    }
+
     .site-header__auth {
-        @apply ml-auto inline-flex items-center text-primary transition-opacity hover:opacity-70;
+        @apply ml-auto inline-flex items-center border-0 bg-transparent p-0 text-primary transition-opacity hover:opacity-70;
+    }
+
+    .site-header__auth-form .site-header__auth {
+        @apply ml-0 cursor-pointer;
     }
 
     .site-header__auth-icon {
