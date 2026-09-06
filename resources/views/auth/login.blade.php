@@ -2,8 +2,8 @@
 
 @section('content')
 
-    <x-body title="Log in">
-        {{-- Login form coming soon --}}
+    <x-body title="Login">
+        <x-auth.login-form />
     </x-body>
 
 @endsection
