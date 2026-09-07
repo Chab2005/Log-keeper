@@ -3,6 +3,10 @@
         @apply flex w-full flex-wrap items-center gap-2 rounded-lg border border-outline-variant bg-surface-container-low p-2 transition-colors duration-300 ease-in-out focus-within:border-primary;
     }
 
+    .tag-input--error {
+        @apply border-2 border-danger focus-within:border-danger;
+    }
+
     .tag-input__chip {
         @apply inline-flex items-center gap-2 rounded-[1px] border border-outline-variant/20 bg-surface px-3 py-1 text-xs uppercase tracking-wide text-on-surface-variant;
     }

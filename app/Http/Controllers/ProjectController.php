@@ -65,11 +65,14 @@ class ProjectController extends Controller
 
         $validated = $request->validate([
             'title'       => ['required', 'string', 'max:25'],
-            'summary'     => ['nullable', 'string', 'max:255'],
-            'description' => ['nullable', 'string', 'max:1024'],
-            'tags'        => ['array'],
+            'summary'     => ['required', 'string', 'max:255'],
+            'description' => ['required', 'string', 'max:1024'],
+            'tags'        => ['required', 'array', 'min:1'],
             'tags.*'      => ['string', 'max:50'],
-        ]);
+        ], [
+            'tags.required' => 'Add at least one tag.',
+            'tags.min'      => 'Add at least one tag.',
+        ], ['tags.*' => 'tag']);
 
         $entry = $project->entries()->create([
             'date'        => now(),
@@ -101,9 +104,12 @@ class ProjectController extends Controller
         $validated = $request->validate([
             'title'    => ['required', 'string', 'max:25'],
             'subtitle' => ['required', 'string', 'max:50'],
-            'tags'     => ['array'],
+            'tags'     => ['required', 'array', 'min:1'],
             'tags.*'   => ['string', 'max:50'],
-        ]);
+        ], [
+            'tags.required' => 'Add at least one tag.',
+            'tags.min'      => 'Add at least one tag.',
+        ], ['tags.*' => 'tag']);
 
         $project = Project::create([
             'name'    => $validated['title'],
@@ -146,11 +152,14 @@ class ProjectController extends Controller
 
         $validated = $request->validate([
             'title'       => ['required', 'string', 'max:25'],
-            'summary'     => ['nullable', 'string', 'max:255'],
-            'description' => ['nullable', 'string', 'max:1024'],
-            'tags'        => ['array'],
+            'summary'     => ['required', 'string', 'max:255'],
+            'description' => ['required', 'string', 'max:1024'],
+            'tags'        => ['required', 'array', 'min:1'],
             'tags.*'      => ['string', 'max:50'],
-        ]);
+        ], [
+            'tags.required' => 'Add at least one tag.',
+            'tags.min'      => 'Add at least one tag.',
+        ], ['tags.*' => 'tag']);
 
         $entry->update([
             'title'       => $validated['title'],

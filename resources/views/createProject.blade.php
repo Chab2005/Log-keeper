@@ -2,18 +2,8 @@
 
 @section('content')
 
-    <form method="POST" action="{{ route('project.store') }}" class="edit-form">
+    <form method="POST" action="{{ route('project.store') }}" class="edit-form" novalidate>
         @csrf
-
-        @if ($errors->any())
-            <div class="edit-form__errors">
-                <ul>
-                    @foreach ($errors->all() as $error)
-                        <li>{{ $error }}</li>
-                    @endforeach
-                </ul>
-            </div>
-        @endif
 
         <div class="edit-form__actions">
             <a href="{{ url('/') }}" class="edit-form__button edit-form__button--cancel">
@@ -29,8 +19,7 @@
         </div>
 
         <div class="edit-form__field">
-            <label class="edit-form__label">Tags</label>
-            <x-tag-input :tags="old('tags', [])" />
+            <x-tag-input :tags="old('tags', [])" :required="true" />
         </div>
 
         <div class="edit-form__field">

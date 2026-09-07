@@ -28,4 +28,7 @@
     data-autogrow
     placeholder="{{ $placeholder }}"
     @required($required)
+    aria-invalid="{{ $errors->has($name) ? 'true' : 'false' }}"
 >{{ $value }}</textarea>
+
+<x-modify.field-error :name="$name" />

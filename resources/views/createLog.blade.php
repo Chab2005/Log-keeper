@@ -2,18 +2,8 @@
 
 @section('content')
 
-    <form method="POST" action="{{ route('logs.store', $project) }}" class="edit-form">
+    <form method="POST" action="{{ route('logs.store', $project) }}" class="edit-form" novalidate>
         @csrf
-
-        @if ($errors->any())
-            <div class="edit-form__errors">
-                <ul>
-                    @foreach ($errors->all() as $error)
-                        <li>{{ $error }}</li>
-                    @endforeach
-                </ul>
-            </div>
-        @endif
 
         <div class="edit-form__actions">
             <a href="{{ route('projects.show', $project) }}" class="edit-form__button edit-form__button--cancel">
@@ -29,8 +19,7 @@
         </div>
 
         <div class="edit-form__field">
-            <label class="edit-form__label">Tags</label>
-            <x-tag-input :tags="old('tags', [])" />
+            <x-tag-input :tags="old('tags', [])" :required="true" />
         </div>
 
         <div class="edit-form__field">
@@ -41,6 +30,7 @@
                 :maxlength="255"
                 :value="old('summary', '')"
                 placeholder="Write a short summary..."
+                :required="true"
             />
         </div>
 
@@ -53,6 +43,7 @@
                 :value="old('description', '')"
                 placeholder="Write a detailed description..."
                 :large="true"
+                :required="true"
             />
         </div>
     </form>

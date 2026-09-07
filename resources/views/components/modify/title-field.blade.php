@@ -24,3 +24,5 @@
     @if($maxlength) maxlength="{{ $maxlength }}" @endif
     placeholder="Enter log title..."
 >
+
+<x-modify.field-error name="title" />
