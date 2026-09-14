@@ -14,7 +14,7 @@
 1. Clone the repository and move into it.
    ```sh
    git clone 
-   cd Log-keeper
+   cd Log-keeper "https://github.com/Chab2005/Log-keeper.git"
    ```
 2. Install PHP dependencies:
    ```sh
