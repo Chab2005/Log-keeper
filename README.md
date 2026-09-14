@@ -12,6 +12,10 @@
 ## Installation
 
 1. Clone the repository and move into it.
+   ```sh
+   git clone 
+   cd Log-keeper
+   ```
 2. Install PHP dependencies:
    ```sh
    composer install
